@@ -254,4 +254,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
- 
+  Widget _genericWidget(String url, AnalysisResult details) {
+    return Card(
+      elevation: 2,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            const Icon(Icons.help_outline, size: 64),
+            const SizedBox(height: 8),
+    
+            const Text("نتيجة غير محددة بدقة", style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            SelectableText("الرابط: $url", style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            ...details.reasons.map((r) => ListTile(leading: const Icon(Icons.info), title: Text(r))),
+          ],
+        ),
+    
+      ),
+    );
+  }
+
+  
