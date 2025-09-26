@@ -75,4 +75,61 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
- 
+  void _showEmptyDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("حقل فارغ"),
+        content: const Text("الرجاء إدخال رابط صحيح قبل الفحص."),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("حسناً")),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInputCard() {
+    return Card(
+      elevation: 4,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            const Text("أدخل الرابط للتحقق:", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+  
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "مثال: https://example.com أو google.com",
+              ),
+        
+              keyboardType: TextInputType.url,
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+     
+                    onPressed: _runAnalysis,
+                    icon: const Icon(Icons.search),
+                    label: const Text("تحقق الآن"),
+                  ),
+                ),
+     
+                const SizedBox(width: 10),
+                OutlinedButton(
+                  onPressed: _resetAll,
+                  child: const Text("مسح"),
+                )
+              ],
+  
+            ),
+          ],
+        ),
+      ),
+    );
+  }
