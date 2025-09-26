@@ -226,4 +226,32 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  
+  Widget _phishyWidget(String url, AnalysisResult details) {
+    return Card(
+      color: Colors.red[50],
+      elevation: 3,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            const Icon(Icons.dangerous_outlined, size: 72, color: Colors.red),
+         
+            const SizedBox(height: 8),
+            Text("الرابط مشبوه جداً — لا تصل إليه", style: TextStyle(fontSize: 18, color: Colors.red[900])),
+            const SizedBox(height: 8),
+            SelectableText("الرابط: $url", style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            const Text("الأسباب:", style: TextStyle(fontWeight: FontWeight.bold)),
+           
+            const SizedBox(height: 6),
+            ...details.reasons.map((r) => Card(child: Padding(padding: const EdgeInsets.all(8.0), child: Text(r)))),
+            const SizedBox(height: 10),
+            const Text("توصيات أمنية:\n• لا تدخل أي بيانات.\n• احذف المصدر الذي وصلتك منه الرسالة.\n• افحص جهازك إن لزم."),
+          ],
+        ),
+      ),
+    );
+  }
+
+ 
