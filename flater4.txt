@@ -80,7 +80,10 @@ class MyApp extends StatelessWidget {
                         children: [
                           Expanded(
 
-                            
+                            child: Container(
+                              alignment: AlignmentDirectional.center,
+                              child: Text("تشفير" ,style: TextStyle(color: Colors.white),),
+
 
 
 
