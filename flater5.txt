@@ -144,4 +144,18 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: const [
          
-             
+              Icon(Icons.info_outline, size: 64, color: Colors.blue),
+              SizedBox(height: 8),
+              Text(
+                "لم يتم فحص أي رابط بعد.\nأدخل رابط واضغط (تحقق الآن) لعرض النتيجة هنا.",
+                textAlign: TextAlign.center,
+                style: 
+                TextStyle(fontSize: 16),
+              )
+            ],
+          ),
+        ),
+      );
+    }
+
+    
