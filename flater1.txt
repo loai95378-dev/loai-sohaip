@@ -16,3 +16,17 @@ class PhishingApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     );
   }
+}
+
+/* ===========================
+   SinglePageHome: صفحة واحدة تحتوي
+   - إدخال الرابط
+   - منطقة عرض النتائج (تتغير حسب الحالة)
+   =========================== */
+class SinglePageHome extends StatefulWidget {
+  const SinglePageHome({super.key});
+
+  @override
+  State<SinglePageHome> createState() => _SinglePageHomeState();
+}
+
