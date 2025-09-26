@@ -69,7 +69,15 @@ class MyApp extends StatelessWidget {
                       border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    
+                    hintText: "ادخل الاسم",
+
+                    prefixIcon: Icon(Icons.person),
+                  )
+                  ),
+               ),
+
+
+
 
 
            
