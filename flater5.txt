@@ -198,4 +198,32 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
- 
+  Widget _suspiciousWidget(String url, AnalysisResult details) {
+    return Card(
+      color: Colors.orange[50],
+      elevation: 3,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            const Icon(Icons.warning_amber_outlined, size: 72, color: Colors.orange),
+         
+            const SizedBox(height: 8),
+            Text("الرابط مريب — يُنصح بالحذر", style: TextStyle(fontSize: 18, color: Colors.orange[900])),
+            const SizedBox(height: 8),
+            SelectableText("الرابط: $url", style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            const Text("الأسباب المكتشفة:", style: TextStyle(fontWeight: FontWeight.bold)),
+            
+            const SizedBox(height: 6),
+            ...details.reasons.map((r) => Card(child: Padding(padding: const EdgeInsets.all(8.0), child: Text(r)))),
+            const SizedBox(height: 10),
+            const Text("إجراءات مقترحة:\n• لا تدخل معلومات حساسة.\n• راجع الدومين جيدًا وتحقق من الأخطاء الإملائية."),
+          ],
+        ),
+      ),
+    );
+  }
+
+  
