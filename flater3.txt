@@ -39,4 +39,15 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        
+        body: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  // رقم 1: صفحة رئيسية
+                  Text(
+                  'الشاشة الرئيسية',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                
