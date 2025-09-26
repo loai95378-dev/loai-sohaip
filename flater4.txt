@@ -37,4 +37,19 @@ class MyApp extends StatelessWidget {
             child: Scaffold(
 
 
-            
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+
+              title: const Text("اتخبار شامل ", style: TextStyle(color: Colors.black),),
+              centerTitle: true,
+
+            ),
+                body: Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: Column(
+
+
+                    children: [
+                  Stack(
+
+                 
