@@ -15,3 +15,16 @@ var tasks = [
 
 ];
 
+class MyApp extends StatelessWidget {
+  @override
+
+
+  Widget build(BuildContext context) {
+    return Center(
+      child: MaterialApp(
+        home: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+
+
+           
