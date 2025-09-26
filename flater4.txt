@@ -60,4 +60,16 @@ class MyApp extends StatelessWidget {
                       child: CircleAvatar(child: Icon(Icons.access_time),))
 
                   ],
-               
+                ),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: TextFormField(
+                  textDirection: TextDirection.rtl,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    
+
+
+           
