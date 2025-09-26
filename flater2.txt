@@ -1,0 +1,220 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+void main(){
+  runApp(myall());
+}
+class myall extends StatelessWidget {
+  const myall({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: 
+      Directionality(textDirection: TextDirection.rtl, child: s1())
+      ,);
+  }
+}
+class s1 extends StatelessWidget {
+  const s1({super.key});
+  TextEditingController control=TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("اختبار شامل ",style: TextStyle(fontSize: 30),),
+        centerTitle: true,
+      ),
+      body: Padding(
+        // padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          spacing: 15,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              child: Stack(
+              children: [
+                 CircleAvatar(
+                backgroundColor: Colors.green,
+                radius: 60,
+              ),
+                Positioned(
+                  bottom: 0,
+                    left: 15,
+                    child: Icon(Icons.camera_alt)),
+              ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              controller:control ,
+              decoration: InputDecoration(
+                border:   OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12)
+                ),
+                hintText: "ادخل اسمك",
+                labelText: "الاسم",
+                prefixIcon: Icon(Icons.person),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              child: MaterialButton(
+                child: Text("تشفير",style: TextStyle(fontSize: 30,color: Colors.white),),
+                color: Colors.red,
+                onPressed: (){
+                  // var Vule =utf8.encoder(control.txt);
+                  // var hash=convert(Vule);
+                  // print(hash);
+                },
+              ),
+            ),
+
+            // ------------------------
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              spacing: 10,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  width: 210,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                    borderRadius: BorderRadius.circular(15)
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Icon(Icons.phone),
+                      Text("الهاتف",style: TextStyle(fontSize: 30),),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  width: 200,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Icon(Icons.phone),
+                      Text("الهاتف",style: TextStyle(fontSize: 30),),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          //   -----------------------------
+         Wrap(
+           spacing: 10,
+           children: [
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             ),
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             ),
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             ),
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             ),
+           ],
+         ), 
+         SizedBox(
+           height: 400,
+           child: ListView.builder(itemBuilder: (c,i)=> Row(
+             children: [
+               Container(
+                 alignment: Alignment.center,
+                 width: 40,
+                 height: 40,
+                 decoration: BoxDecoration(
+                     color: Colors.grey,
+                     borderRadius: BorderRadius.circular(20)
+                 ),
+                 child: Text("1",style: TextStyle(fontSize: 15),),
+
+               ),
+               Container(
+                 alignment: Alignment.center,
+                 width: 150,
+                 height: 50,
+                 child: Text("معلومات شخصيه",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w900),),
+                 decoration: BoxDecoration(
+                     color: Colors.green,
+                     borderRadius: BorderRadius.circular(20)
+                 ),
+               )
+             ],
+           ) ,itemCount: 10,
+           scrollDirection: Axis.vertical,),
+         ),
+         //    --------------
+            SizedBox(
+              height: 20,
+            ),
+        // -------------
+          ],
+        ),
+      ),
+    );
+  }
+}
+//----------
+// SizedBox(
+// height: 300,
+// child: ListView.builder(itemBuilder: (c,i)=>  Container(
+// margin: EdgeInsets.symmetric(vertical: 5),
+// width: 80,
+// height: 60,
+// decoration: BoxDecoration(
+// color: Colors.green,
+// borderRadius: BorderRadius.circular(16)
+// ),
+// child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+// ),itemCount: 10,
+// scrollDirection: Axis.vertical,),
+// ),
