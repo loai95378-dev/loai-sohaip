@@ -271,4 +271,44 @@ class _SinglePageHomeState extends State<SinglePageHome> {
     }
   }
 
- 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("كشف الاحتيال - صفحة واحدة"),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            _buildInputCard(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: _buildResultArea(),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+              child: Row(
+                children: [
+                  if (_lastResult != null)
+                    Row(
+                      children: [
+                        Text("الدرجة: ${_lastResult!.score}"),
+                        const SizedBox(width: 10),
+                        Text("التصنيف: ${_typeLabel(_lastResult!.type)}", style: const TextStyle(fontWeight: FontWeight.bold)),
+                      ],
+                    )
+                  else
+                    const Text("لم يتم الفحص بعد"),
+                  const Spacer(),
+                  TextButton(onPressed: _resetAll, child: const Text("إعادة ضبط")),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
