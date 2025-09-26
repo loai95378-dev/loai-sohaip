@@ -149,4 +149,6 @@ class MainScreen extends StatelessWidget {
                       color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                   
+                    child: Text(
+                        'da39a3ee5e6b4b0d3255bfef95601890af...',
+                        style: TextStyle(fontSize: 14, color: Colors.
