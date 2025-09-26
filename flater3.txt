@@ -89,4 +89,21 @@ class MainScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                
+                const SizedBox(height: 24),
+                // رقم 4 و 5: حقل الإدخال
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'ادخل اسماء',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                  ),
+                ),
+               
