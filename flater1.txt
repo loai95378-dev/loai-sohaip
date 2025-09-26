@@ -312,3 +312,101 @@ class _SinglePageHomeState extends State<SinglePageHome> {
   }
 }
 
+/*=======================
+   نموذج نتيجة التحليل (Data class)
+   =========================== */
+enum ResultType { safe, suspicious, phishy, unknown }
+
+class AnalysisResult {
+  final ResultType type; ====
+  final List<String> reasons;
+  final bool hasSsl;
+  final bool containsIp;
+  final bool looksLikeFamous;
+  final bool hasDangerKeywords;
+  final int score;
+
+  AnalysisResult({
+    required this.type,
+    required this.reasons,
+    required this.hasSsl,
+    required this.containsIp,
+    required this.looksLikeFamous,
+    required this.hasDangerKeywords,
+    required this.score,
+  });
+}
+
+/* ===========================
+   LinkAnalyzer: قواعد فحص نصية (heuristics)
+   يعمل بدون إنترنت
+   =========================== */
+class LinkAnalyzer {
+  static AnalysisResult analyze(String url) {
+    final lower = url.toLowerCase();
+
+    // SSL
+    bool hasSsl = lower.startsWith('https://');
+
+    // IP في الدومين؟
+    RegExp ipRegex = RegExp(r'^(http[s]?:\/\/)?(\d{1,3}\.){3}\d{1,3}');
+    bool containsIp = ipRegex.hasMatch(lower);
+
+    // كلمات خطيرة
+    List<String> danger = ['login', 'verify', 'update', 'bank', 'confirm', 'secure', 'signin'];
+    bool hasDangerKeywords = danger.any((w) => lower.contains(w));
+
+    // يشبه موقع مشهور؟ (خدع هجائية)
+    List<String> famousRoots = ['google', 'facebook', 'youtube', 'amazon', 'paypal'];
+    bool looksLikeFamous = false;
+    for (var f in famousRoots) {
+      if (lower.contains('$f.') || lower.contains('.$f')) {
+        // وجود الدومين بشكل صحيح => ليس بالضرورة مشبوه
+      } else if (lower.contains(f) && !lower.contains('$f.')) {
+        looksLikeFamous = true;
+        break;
+      }
+    }
+
+    // طول الرابط
+    bool veryLong = url.length > 80;
+
+    // أسباب
+    List<String> reasons = [];
+    if (!hasSsl) reasons.add("لا يوجد HTTPS / شهادة SSL.");
+    if (containsIp) reasons.add("يحتوي على عنوان IP بدلًا من دومين.");
+    if (hasDangerKeywords) reasons.add("يحتوي كلمات حسّاسة مثل login/verify/bank.");
+    if (looksLikeFamous) reasons.add("يشبه اسم موقع مشهور (محاولة تقليد).");
+    if (veryLong) reasons.add("طول الرابط كبير جداً — قد يُخفي مسار خبيث.");
+    if (reasons.isEmpty) reasons.add("لم تُكتشف علامات مشبوهة واضحة.");
+
+    // حساب درجة الشبهة
+    int score = 0;
+    if (!hasSsl) score += 2;
+    if (containsIp) score += 3;
+    if (hasDangerKeywords) score += 2;
+    if (looksLikeFamous) score += 3;
+    if (veryLong) score += 1;
+
+    ResultType finalType;
+    if (score >= 6) {
+      finalType = ResultType.phishy;
+    } else if (score >= 3) {
+      finalType = ResultType.suspicious;
+    } else if (score <= 2) {
+      finalType = ResultType.safe;
+    } else {
+      finalType = ResultType.unknown;
+    }
+
+    return AnalysisResult(
+      type: finalType,
+      reasons: reasons,
+      hasSsl: hasSsl,
+      containsIp: containsIp,
+      looksLikeFamous: looksLikeFamous,
+      hasDangerKeywords: hasDangerKeywords,
+      score: score,
+    );
+  }
+}
