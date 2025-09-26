@@ -117,4 +117,18 @@ class MainScreen extends StatelessWidget {
                     ),
                     minimumSize: const Size.fromHeight(50),
                   ),
-                  
+                  child: Text(
+                    'ادخل اسماء',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                // رقم 8: قائمة List View
+                Text(
+                  'الاسم الأول',
+                  style: TextStyle(fontSize: 16),
+                ),
+                
