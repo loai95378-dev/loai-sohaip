@@ -73,4 +73,80 @@ class s1 extends StatelessWidget {
             ),
 
             // ------------------------
-            
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              spacing: 10,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  width: 210,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                    borderRadius: BorderRadius.circular(15)
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Icon(Icons.phone),
+                      Text("الهاتف",style: TextStyle(fontSize: 30),),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  width: 200,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Icon(Icons.phone),
+                      Text("الهاتف",style: TextStyle(fontSize: 30),),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          //   -----------------------------
+         Wrap(
+           spacing: 10,
+           children: [
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             ),
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             ),
+             Container(
+               alignment: Alignment.center,
+               width: 80,
+               height: 60,
+               decoration: BoxDecoration(
+                   color: Colors.green,
+                   borderRadius: BorderRadius.circular(16)
+               ),
+               child: Text("المهاره ",style: TextStyle(fontSize: 20),),
+
+             
