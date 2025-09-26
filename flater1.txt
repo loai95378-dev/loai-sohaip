@@ -30,3 +30,21 @@ class SinglePageHome extends StatefulWidget {
   State<SinglePageHome> createState() => _SinglePageHomeState();
 }
 
+class _SinglePageHomeState extends State<SinglePageHome> {
+  final TextEditingController _controller = TextEditingController();
+  AnalysisResult? _lastResult;
+  String? _lastUrl;
+
+  void _runAnalysis() {
+    final raw = _controller.text.trim();
+    if (raw.isEmpty) {
+      // حالة الحقل الفارغ
+      setState(() {
+        _lastResult = null;
+        _lastUrl = null;
+      });
+      _showEmptyDialog();
+      return;
+    }
+
+    
