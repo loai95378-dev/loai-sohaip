@@ -52,4 +52,12 @@ class MyApp extends StatelessWidget {
                     children: [
                   Stack(
 
-                 
+                  children: [
+                  CircleAvatar(radius: 100,child: Icon(Icons.person,size: 10,),),
+                  Positioned(
+                      bottom: 0,
+                      left: 0,
+                      child: CircleAvatar(child: Icon(Icons.access_time),))
+
+                  ],
+               
