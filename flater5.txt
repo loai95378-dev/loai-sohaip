@@ -158,4 +158,16 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    
+    switch (_lastResult!.type) {
+      case ResultType.safe:
+        return _safeWidget(_lastUrl!, _lastResult!);
+      case ResultType.suspicious:
+        return _suspiciousWidget(_lastUrl!, _lastResult!);
+      case ResultType.phishy:
+        return _phishyWidget(_lastUrl!, _lastResult!);
+      default:
+        return _genericWidget(_lastUrl!, _lastResult!);
+    }
+  }
+
+ 
