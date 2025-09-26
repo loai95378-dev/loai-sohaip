@@ -63,4 +63,88 @@ class _SinglePageHomeState extends State<SinglePageHome> {
     return input;
   }
 
-  
+  void _resetAll() {
+    _controller.clear();
+    setState(() {
+      _lastResult = null;
+      _lastUrl = null;
+    });
+  }
+
+  void _showEmptyDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("حقل فارغ"),
+        content: const Text("الرجاء إدخال رابط صحيح قبل الفحص."),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("حسناً")),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInputCard() {
+    return Card(
+      elevation: 4,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            const Text("أدخل الرابط للتحقق:", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "مثال: https://example.com أو google.com",
+              ),
+              keyboardType: TextInputType.url,
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: _runAnalysis,
+                    icon: const Icon(Icons.search),
+                    label: const Text("تحقق الآن"),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                OutlinedButton(
+                  onPressed: _resetAll,
+                  child: const Text("مسح"),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildResultArea() {
+    if (_lastUrl == null || _lastResult == null) {
+      return Card(
+        elevation: 2,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: Column(
+            children: const [
+              Icon(Icons.info_outline, size: 64, color: Colors.blue),
+              SizedBox(height: 8),
+              Text(
+                "لم يتم فحص أي رابط بعد.\nأدخل رابط واضغط (تحقق الآن) لعرض النتيجة هنا.",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              )
+            ],
+          ),
+        ),
+      );
+    }
+
+    
