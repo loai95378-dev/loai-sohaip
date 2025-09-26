@@ -131,4 +131,15 @@ class MainScreen extends StatelessWidget {
                   'الاسم الأول',
                   style: TextStyle(fontSize: 16),
                 ),
+                const SizedBox(height: 8),
+                Text(
+                  'الاسم الثاني',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 24),
+                // رقم 9: تصميم Crypto
+                Text(
+                  'الشاشة تفاصيل التشفير',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
                 
