@@ -1,0 +1,40 @@
+import 'package:egzam/xx.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+void main() {
+  runApp(MyApp());
+}
+
+var tasks = [
+  ' معلومات شخصيه ',
+  ' معلومات شخصيه',
+  ' معلومات شخصيه',
+  ' معلومات شخصيه',
+  ' معلومات شخصيه',
+
+
+];
+
+class MyApp extends StatelessWidget {
+  @override
+
+
+  Widget build(BuildContext context) {
+    return Center(
+      child: MaterialApp(
+        home: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+class MyApp extends StatelessWidget {
+  @override
+
+
+  Widget build(BuildContext context) {
+    return Center(
+      child: MaterialApp(
+        home: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+
+
+            
