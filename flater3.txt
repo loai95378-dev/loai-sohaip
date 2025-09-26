@@ -142,4 +142,11 @@ class MainScreen extends StatelessWidget {
                   'الشاشة تفاصيل التشفير',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                
+                const SizedBox(height: 8),
+                Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                   
