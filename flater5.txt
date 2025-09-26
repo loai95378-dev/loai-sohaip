@@ -170,4 +170,32 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  Widget _safeWidget(String url, AnalysisResult details) {
+    return Card(
+      color: Colors.green[50],
+      elevation: 3,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            const Icon(Icons.check_circle_outline, size: 72, color: Colors.green),
+       
+            const SizedBox(height: 8),
+            Text("الرابط يبدو آمنًا مبدئياً", style: TextStyle(fontSize: 18, color: Colors.green[900])),
+            const SizedBox(height: 8),
+            SelectableText("الرابط: $url", style: const TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            const Text("تفاصيل الفحص:", style: TextStyle(fontWeight: FontWeight.bold)),
+           
+            const SizedBox(height: 6),
+            ...details.reasons.map((r) => ListTile(leading: const Icon(Icons.info), title: Text(r))),
+            const SizedBox(height: 6),
+            const Text("نصيحة: تأكد دائماً من الشهادة وإدخال البيانات الحساسة فقط في المواقع الموثوقة."),
+          ],
+        ),
+      ),
+    );
+  }
+
  
