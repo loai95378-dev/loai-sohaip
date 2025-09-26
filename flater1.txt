@@ -47,4 +47,20 @@ class _SinglePageHomeState extends State<SinglePageHome> {
       return;
     }
 
-    
+    final url = _normalizeUrl(raw);
+    final analysis = LinkAnalyzer.analyze(url);
+
+    setState(() {
+      _lastUrl = url;
+      _lastResult = analysis;
+    });
+  }
+
+  String _normalizeUrl(String input) {
+    if (!input.startsWith('http://') && !input.startsWith('https://')) {
+      return 'http://$input';
+    }
+    return input;
+  }
+
+  
