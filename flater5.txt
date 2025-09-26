@@ -277,4 +277,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  
+  String _typeLabel(ResultType t) {
+    switch (t) {
+      case ResultType.safe:
+        return 'آمن';
+      case ResultType.suspicious:
+        return 'مريب';
+      case ResultType.phishy:
+        return 'مشبوه جداً';
+      default:
+        return 'غير محدد';
+    }
+  }
+
+ 
