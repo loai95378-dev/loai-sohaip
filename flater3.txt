@@ -16,3 +16,27 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Row(
+            children: [
+              const Icon(Icons.arrow_back_ios, color: Colors.black),
+              const SizedBox(width: 8),
+              Text(
+                'تفاصيل',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        
